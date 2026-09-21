@@ -31,10 +31,6 @@ Representative public threads reviewed:
 
 Amazon listing titles, rating labels, installation-kit language, window-kit questions, drainage questions, and review themes were inspected as a language inventory. Individual reviews and seller claims were not promoted to factual evidence.
 
-## Search-data limitation
-
-Semrush was part of the intended research scope, but account-level keyword volume, difficulty, and CPC data were not available in the logged-out research environment. The page therefore does not display or imply any Semrush numeric estimates.
-
 ## Additional internet pain-point research
 
 The page's filterable pain-point atlas extends the original device-selection research into purchase, installation, ownership, and extreme-event failure modes. It covers door-event condensation, drain failure, combustion-appliance backdraft screening, unusual exhaust openings, deep cleaning, long-occupancy ventilation, electrical-load competition, garage geometry, structure-borne sound, service and parts access, multi-zone capacity sharing, snow and defrost water, wildfire smoke, outage behavior, smart-control dependencies, sizing disagreements, corrosive environments, and accessible maintenance.
@@ -49,4 +45,4 @@ The implementation deliberately permits a no-match result. Official product evid
 
 ## Attached deck limitation
 
-`车库空调-Reddit-VOC-9.4.pptx` is a useful qualitative synthesis. It does not contain a reproducible raw-source appendix with Reddit URLs, Amazon review exports, dates, sample sizes, or Semrush metric tables. Its statements were treated as hypotheses to test and as prompts for coverage, not as authoritative evidence.
+`车库空调-Reddit-VOC-9.4.pptx` is a useful qualitative synthesis. It does not contain a reproducible raw-source appendix with Reddit URLs, Amazon review exports, dates, or sample-level coding. Its statements were treated as hypotheses to test and as prompts for coverage, not as authoritative evidence.

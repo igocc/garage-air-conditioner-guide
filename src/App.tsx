@@ -606,7 +606,6 @@ function App() {
             <div>
               <h2 id="sources-title">How this guide was built</h2>
               <p>Technical claims come from public agencies, standards bodies, and test-method guidance. Reddit and Amazon were used to find recurring questions and confusing language, not to establish safety or performance facts.</p>
-              <p className="source-note">Semrush account-level keyword metrics were unavailable during research, so this page does not invent volume, difficulty, or CPC values.</p>
             </div>
             <details className="sources-disclosure">
               <summary>View technical sources<CaretDown size={18} aria-hidden="true" /></summary>
