@@ -371,6 +371,21 @@ export function Advisor() {
         </fieldset>
 
         <fieldset>
+          <legend>Is there a fuel-burning appliance in the garage?</legend>
+          <p className="fieldset-help">Examples include a gas water heater or furnace that uses surrounding garage air for combustion.</p>
+          <div className="check-grid">
+            <label className="check-choice">
+              <input
+                checked={input.combustionAppliance}
+                onChange={(event) => update('combustionAppliance', event.target.checked)}
+                type="checkbox"
+              />
+              <span>Yes or not sure</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
           <legend>How will the space be operated?</legend>
           <SegmentedChoice
             name="operation"

@@ -20,6 +20,7 @@ export type AdvisorInput = {
   doorUse: DoorUse
   opening: Opening
   power: Power
+  combustionAppliance: boolean
   operation: Operation
   pollutants: Pollutant[]
 }
@@ -97,6 +98,14 @@ function chooseProducts(input: AdvisorInput, system: SystemId, upperLoad: number
       ids: [] as ProductId[],
       note: 'Resolve source control, outdoor exhaust, and equipment protection before selecting comfort equipment.',
       noProductReason: 'No audited GARVEE comfort product is a substitute for controlling fine dust, welding fumes, paint, fuel, or solvent vapor.',
+    }
+  }
+
+  if (input.combustionAppliance && system === 'portable') {
+    return {
+      ids: [] as ProductId[],
+      note: 'Resolve combustion draft and makeup-air safety before selecting room-exhaust equipment.',
+      noProductReason: 'A natural-draft gas appliance may conflict with depressurizing exhaust equipment. Have combustion air and worst-case draft checked before choosing a portable AC.',
     }
   }
 
@@ -213,6 +222,10 @@ export function buildAdvisorResult(input: AdvisorInput): AdvisorResult {
   if (input.pollutants.includes('wood-dust')) {
     warnings.push('Wood dust calls for collection at the tool and more frequent coil, blower, filter, and drain inspection.')
   }
+  if (input.combustionAppliance) {
+    warnings.push('A gas water heater, furnace, or other natural-draft appliance can turn garage depressurization into a combustion-safety concern. Verify combustion air and makeup air before adding exhaust equipment.')
+    checklist.push('Identify the venting type of every fuel-burning appliance and have worst-case draft checked before using room-exhaust equipment.')
+  }
 
   checklist.push('Measure the garage door, ceiling, windows, and intended equipment locations.')
   checklist.push('Seal major air leaks and plan roof or door insulation before final sizing.')
@@ -264,6 +277,7 @@ export const defaultAdvisorInput: AdvisorInput = {
   doorUse: 'sometimes',
   opening: 'wall',
   power: 'unknown',
+  combustionAppliance: false,
   operation: 'daily',
   pollutants: [],
 }

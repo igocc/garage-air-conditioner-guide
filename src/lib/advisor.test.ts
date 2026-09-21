@@ -70,6 +70,19 @@ describe('garage advisor', () => {
     expect(result.noProductReason).toContain('without an approved path')
   })
 
+  it('stops a portable recommendation when combustion draft is unresolved', () => {
+    const result = buildAdvisorResult({
+      ...defaultAdvisorInput,
+      opening: 'window',
+      operation: 'occasional',
+      combustionAppliance: true,
+    })
+    expect(result.primarySystem).toBe('portable')
+    expect(result.recommendedProductIds).toEqual([])
+    expect(result.noProductReason).toContain('natural-draft gas appliance')
+    expect(result.warnings.join(' ')).toContain('combustion-safety concern')
+  })
+
   it('does not force the largest audited product into an excessive screening load', () => {
     const result = buildAdvisorResult({
       ...defaultAdvisorInput,

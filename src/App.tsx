@@ -19,8 +19,12 @@ import {
 import { motion, useReducedMotion, useScroll, useSpring } from 'motion/react'
 import { useRef, useState } from 'react'
 import { Advisor } from './components/Advisor'
+import { PainPointAtlas } from './components/PainPointAtlas'
 import { ProductRecommendations } from './components/ProductRecommendations'
 import { ScenarioJourneys } from './components/ScenarioJourneys'
+import { SolutionLadder } from './components/SolutionLadder'
+import { VideoGuides } from './components/VideoGuides'
+import { VocInsights } from './components/VocInsights'
 import {
   climateProfiles,
   heatPaths,
@@ -269,6 +273,8 @@ function App() {
           </a>
           <nav aria-label="Primary navigation">
             <a href="#scenarios">Scenarios</a>
+            <a href="#videos">Videos</a>
+            <a href="#pain-points">Pain points</a>
             <a href="#advisor">Find your setup</a>
             <a href="#products">Products</a>
             <a href="#installation">Install</a>
@@ -314,6 +320,12 @@ function App() {
         <LensSwitcher />
 
         <ScenarioJourneys />
+
+        <VideoGuides />
+
+        <VocInsights />
+
+        <PainPointAtlas />
 
         <section className="story-section" id="story" aria-labelledby="story-title">
           <div className="shell story-section__layout">
@@ -445,6 +457,8 @@ function App() {
             <SystemExplorer />
           </div>
         </section>
+
+        <SolutionLadder />
 
         <section className="rating-section" aria-labelledby="rating-title">
           <div className="shell rating-section__layout">

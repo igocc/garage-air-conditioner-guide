@@ -35,6 +35,12 @@ Amazon listing titles, rating labels, installation-kit language, window-kit ques
 
 Semrush was part of the intended research scope, but account-level keyword volume, difficulty, and CPC data were not available in the logged-out research environment. The page therefore does not display or imply any Semrush numeric estimates.
 
+## Additional internet pain-point research
+
+The page's filterable pain-point atlas extends the original device-selection research into purchase, installation, ownership, and extreme-event failure modes. It covers door-event condensation, drain failure, combustion-appliance backdraft screening, unusual exhaust openings, deep cleaning, long-occupancy ventilation, electrical-load competition, garage geometry, structure-borne sound, service and parts access, multi-zone capacity sharing, snow and defrost water, wildfire smoke, outage behavior, smart-control dependencies, sizing disagreements, corrosive environments, and accessible maintenance.
+
+Each item is labeled either **Authority** or **VOC signal** in the interface. Authority sources establish technical or safety boundaries; retailer and community examples are used only to discover language and failure modes. The complete claim-by-claim evidence assessment and direct links are in [INTERNET_PAIN_POINT_RESEARCH.md](INTERNET_PAIN_POINT_RESEARCH.md).
+
 ## Official GARVEE product snapshot
 
 Nine live U.S. product pages were audited on 2026-09-21 across portable AC, mini-split, cold-weather heat-pump, and evaporative-cooler paths. Product facts, price snapshots, page contradictions, warranty boundaries, and the scenario-to-product matrix are documented in [PRODUCT_RESEARCH.md](PRODUCT_RESEARCH.md).

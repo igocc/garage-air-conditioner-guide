@@ -5,8 +5,12 @@ An independent, interactive GARVEE U.S. content prototype for people deciding ho
 The page deliberately starts with the garage and its use case rather than a product grid. It includes:
 
 - Six full decision journeys for a humid gym, daily office, wood shop, protected storage, rental or HOA constraints, and cold-climate use
-- A transparent screening tool for equipment path, cooling-load range, exact GARVEE SKU candidates, and no-fit results
+- Four interactive video storyboards with full scripts, captions, visual beats, and honest AI-image disclosure
+- A transparent screening tool for equipment path, cooling-load range, exact GARVEE SKU candidates, combustion-appliance stop conditions, and no-fit results
+- A filterable 18-item pain-point atlas covering smoke, condensate, electrical capacity, special openings, acoustics, serviceability, zoning, smart controls, corrosion, accessibility, and outage behavior
+- A deck-derived VOC module with explicit methodology limits, activity clusters, mini-split barriers, and the eight-step portable-to-mini-split education path
 - Side-by-side system tradeoffs for mini-splits, portable ACs, window ACs, evaporative coolers, and building-first fixes
+- A complete upgrade ladder plus dehumidifier and heat-pump-water-heater side paths
 - Nine official GARVEE product snapshots with rating-basis, voltage, page-claim, installation, and evidence caveats
 - Climate, envelope, air-quality, installation, total-scope, maintenance, warranty, and safety guidance
 - A source disclosure separating authoritative technical evidence from Reddit and Amazon voice-of-customer research
@@ -36,7 +40,7 @@ Public URL: <https://igocc.github.io/garage-air-conditioner-guide/>
 
 The advisor is a screening aid, not a Manual J calculation. It starts from public room-AC guidance, then applies broad modifiers for ceiling height, enclosure, climate, sun, and door use. Its SKU output is a product shortlist with explicit stop conditions, not a performance guarantee. The intentionally wide result must be checked against the exact equipment manual, building conditions, local rules, and a qualified load calculation when cost or risk is significant.
 
-The attached VOC deck informed hypotheses and question framing. It did not include a reproducible table of raw Reddit URLs, Amazon review exports, or Semrush metrics, so the implementation does not treat its claims as verified data. See [RESEARCH.md](RESEARCH.md) for the technical evidence trail and [PRODUCT_RESEARCH.md](PRODUCT_RESEARCH.md) for the official-product snapshot, contradictions, and scenario matrix.
+The attached VOC deck informed hypotheses and question framing. It did not include a reproducible table of raw Reddit URLs, Amazon review exports, or Semrush metrics, so deck-reported rates are labeled and are not presented as independently verified data. See [PPT_COVERAGE_AUDIT.md](PPT_COVERAGE_AUDIT.md) for the slide-by-slide audit, [VIDEO_CONTENT.md](VIDEO_CONTENT.md) for the production-ready storyboards, [INTERNET_PAIN_POINT_RESEARCH.md](INTERNET_PAIN_POINT_RESEARCH.md) for the additional web research, [RESEARCH.md](RESEARCH.md) for the technical evidence trail, and [PRODUCT_RESEARCH.md](PRODUCT_RESEARCH.md) for the official-product snapshot, contradictions, and scenario matrix.
 
 ## Generated images
 
