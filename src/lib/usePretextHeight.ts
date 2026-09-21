@@ -7,30 +7,46 @@ export function usePretextHeight(ref: RefObject<HTMLElement | null>, text: strin
     if (!element || typeof ResizeObserver === 'undefined') return
 
     let prepared: ReturnType<typeof prepare> | null = null
+    let frame: number | null = null
+    let lastWidth = -1
+
+    const applyLayout = () => {
+      if (!prepared) return
+      const width = element.clientWidth
+      if (width <= 0 || width === lastWidth) return
+      lastWidth = width
+      const styles = getComputedStyle(element)
+      const result = layout(prepared, width, Number.parseFloat(styles.lineHeight))
+      const minHeight = `${result.height}px`
+      const lineCount = String(result.lineCount)
+      if (element.style.minHeight !== minHeight) element.style.minHeight = minHeight
+      if (element.dataset.pretextLines !== lineCount) element.dataset.pretextLines = lineCount
+    }
 
     const measure = async () => {
       await document.fonts.ready
       const styles = getComputedStyle(element)
       const font = `${styles.fontWeight} ${styles.fontSize} "Source Sans 3 Variable"`
-      const lineHeight = Number.parseFloat(styles.lineHeight)
       prepared = prepare(text, font, {
         letterSpacing: Number.parseFloat(styles.letterSpacing) || 0,
       })
-      const result = layout(prepared, element.clientWidth, lineHeight)
-      element.style.minHeight = `${result.height}px`
-      element.dataset.pretextLines = String(result.lineCount)
+      lastWidth = -1
+      applyLayout()
     }
 
     void measure()
     const observer = new ResizeObserver(() => {
-      if (!prepared) return
-      const styles = getComputedStyle(element)
-      const result = layout(prepared, element.clientWidth, Number.parseFloat(styles.lineHeight))
-      element.style.minHeight = `${result.height}px`
-      element.dataset.pretextLines = String(result.lineCount)
+      if (frame !== null) cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        frame = null
+        applyLayout()
+      })
     })
     observer.observe(element)
 
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      if (frame !== null) cancelAnimationFrame(frame)
+    }
   }, [ref, text])
 }
