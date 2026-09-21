@@ -226,7 +226,11 @@ function ResultPanel({ result }: { result: AdvisorResult }) {
   )
 }
 
-export function Advisor() {
+export function Advisor({
+  onPlanChange,
+}: {
+  onPlanChange?: (input: AdvisorInput, result: AdvisorResult) => void
+}) {
   const [input, setInput] = useState(defaultAdvisorInput)
   const [result, setResult] = useState<AdvisorResult | null>(null)
   const [error, setError] = useState('')
@@ -261,7 +265,9 @@ export function Advisor() {
       return
     }
     setError('')
-    setResult(buildAdvisorResult(input))
+    const nextResult = buildAdvisorResult(input)
+    setResult(nextResult)
+    onPlanChange?.(input, nextResult)
   }
 
   return (

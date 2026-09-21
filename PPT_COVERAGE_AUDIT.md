@@ -9,7 +9,7 @@ The newly uploaded file is byte-for-byte identical to the earlier attachment. Th
 ## Summary
 
 - **Strongly covered:** garage-first planning, insulation and sealing, portable AC limitations, mini-split fit, humidity, evaporative climate limits, independent garage HVAC, decision logic, installation, safety, and product guardrails.
-- **Now explicitly covered:** the Portable-to-mini-split education sequence, entertainment and specialist workshop sub-scenarios, mini-split objections, the full upgrade ladder, heat-pump-water-heater side cooling, interactive video storyboards, and additional internet pain points.
+- **Now explicitly covered:** the Portable-to-mini-split education sequence, entertainment and specialist workshop sub-scenarios, mini-split objections, the full upgrade ladder, heat-pump-water-heater interaction, interactive video storyboards, eight operating modes, four decision gates, and additional internet pain points.
 - **Intentionally not carried into the public page:** Reddit anecdotes presented as performance proof, installation-price anecdotes, Alexa-specific implementation claims, and Amazon ABA rank data without the underlying export.
 
 ## Slide-by-slide matrix
@@ -22,7 +22,7 @@ The newly uploaded file is byte-for-byte identical to the earlier attachment. Th
 | 4 | Sample and coding method | Documentation only | The evidence boundary is described in `RESEARCH.md`. The page does not present a pseudo-statistical methodology without raw source data. |
 | 5 | Portable search start to mini-split conclusion | Strong with boundary | Covered through system comparison, advisor logic, video episode 2, and the VOC module. Theme percentages are labeled as deck-reported rather than independently reproduced. |
 | 6 | Eight-step Portable education path | Strong | The complete path appears as an explicit visual sequence; named Reddit anecdotes are not presented as verified case studies. |
-| 7 | Second living space: workshop, gym, entertainment | Strong | Six scenario journeys plus the activity-cluster module cover gym, office/studio, workshop, storage, gaming, repair, 3D printing, rental/HOA, and cold climate. Higher-risk processes retain source-control warnings rather than receiving casual product recommendations. |
+| 7 | Second living space: workshop, gym, entertainment | Strong | Eight scenario journeys plus the activity-cluster and operating-mode modules cover gym, office/studio, workshop, storage, gaming, repair, detailing, 3D printing, rental/HOA, and cold climate. Higher-risk processes retain source-control warnings rather than receiving casual product recommendations. |
 | 8 | U.S. garage visual examples | Strong | The page includes dedicated generated garage-life, scenario, climate, installation, heat-path, and air-quality visuals. |
 | 9 | Step 0: insulation and sealing | Strong | Prominent in the heat-path section, five-layer plan, scenario journeys, planner reasons, and installation checklist. Anecdotal temperature and cost figures are omitted. |
 | 10 | Five Portable AC pain points | Strong | Whole-space limitations, negative pressure, exhaust, internal heat, rating-basis confusion, hose heat, and condensate are covered. |

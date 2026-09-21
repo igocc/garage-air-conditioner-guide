@@ -10,12 +10,14 @@ Primary audience: U.S. garage owners comparing cooling paths for a gym, office, 
 
 Reading order:
 
-1. Name the job and the dominant problem.
-2. Explain why garages behave differently from bedrooms.
-3. Build a personalized starting plan.
-4. Compare system failure modes.
-5. Check climate, installation, maintenance, and safety.
-6. Move to a stable category page when a path is credible.
+1. Imagine the garage as a usable part of daily life.
+2. Follow one of eight scenario narratives and expose hidden problems.
+3. Follow eight operating modes and four decision gates that change the plan over time.
+4. Diagnose the envelope, heat-rejection path, electrical route, air quality, and load band.
+5. Choose a system and complete it with the right site materials and professional tasks.
+6. Compare verified product candidates and the installed decision.
+7. Prepare a transparent installation scope without implying live service coverage.
+8. Carry the result into maintenance, safety, warranty, and second-season ownership.
 
 ## Visual system
 
@@ -35,9 +37,9 @@ The orange accent is reserved for progress, primary actions, and a few high-valu
 
 ## Design dials
 
-- Spatial composition: 6/10
-- Motion intensity: 4/10
-- Visual density: 5/10
+- Spatial composition: 8/10
+- Motion intensity: 5/10
+- Visual density: 6/10
 
 Layouts alternate between full-width media, split editorial sections, comparison rails, form/result columns, and compact information grids. Motion is limited to reading progress, section reveals, and state changes. Reduced-motion preferences disable nonessential movement.
 
@@ -53,4 +55,5 @@ Generated visuals are editorial context images, not product photography. They mu
 - Light and dark color schemes, plus reduced-motion handling
 - No invented keyword-volume, review-count, efficiency, capacity, price, or installation claims
 - Stable category CTAs and a visible evidence boundary
+- Installation coordination is labeled as a concept demo and never presents simulated ZIP states as live coverage
 - Passing lint, unit tests, and production build

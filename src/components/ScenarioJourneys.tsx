@@ -1,20 +1,35 @@
-import { ArrowRight, CheckCircle, ShieldWarning } from '@phosphor-icons/react'
+import { ArrowRight, CheckCircle, Plus, ShieldWarning } from '@phosphor-icons/react'
 import { motion, useReducedMotion } from 'motion/react'
 import { useState } from 'react'
-import { productsById, scenarioJourneys } from '../productContent'
+import { productsById, scenarioJourneys, type ScenarioJourney } from '../productContent'
 
 const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 
-export function ScenarioJourneys() {
-  const [active, setActive] = useState(scenarioJourneys[0].id)
+const journeyMedia: Record<string, { image: string; alt: string; width: number; height: number }> = {
+  'humid-gym': { image: 'hero-garage-v2.jpg', alt: 'Lived-in garage with a compact gym, work area, vehicle, tools, and wall-mounted mini-split', width: 1800, height: 1013 },
+  'daily-office': { image: 'scenario-office-music-v2.jpg', alt: 'Homeowner working from a garage office and music room with a ductless mini-split', width: 1120, height: 1400 },
+  'wood-shop': { image: 'scenario-workshop-v2.jpg', alt: 'Home woodworker using tool-level dust collection in a garage with separate comfort cooling', width: 1120, height: 1400 },
+  'collection-storage': { image: 'garage-life-scenes.webp', alt: 'Garage scenes showing vehicle storage and multiple everyday uses', width: 2073, height: 758 },
+  'rental-hoa': { image: 'installation-readiness.webp', alt: 'Garage showing portable and mini-split heat-rejection paths', width: 1536, height: 1024 },
+  'cold-garage': { image: 'garage-climate-zones.webp', alt: 'Garage exterior in dry, humid, and snowy climate conditions', width: 2048, height: 768 },
+  'gaming-music': { image: 'scenario-office-music-v2.jpg', alt: 'Garage office and music room with computers, instruments, and a ductless mini-split', width: 1120, height: 1400 },
+  'auto-detailing': { image: 'hero-garage-v2.jpg', alt: 'Organized multi-purpose garage with vehicle space, tools, and wall-mounted mini-split', width: 1800, height: 1013 },
+}
+
+const journeyOrder = ['humid-gym', 'daily-office', 'gaming-music', 'wood-shop', 'auto-detailing', 'collection-storage', 'rental-hoa', 'cold-garage']
+const orderedJourneys = journeyOrder.map((id) => scenarioJourneys.find((item) => item.id === id)!).filter(Boolean)
+
+export function ScenarioJourneys({ onAddScenario }: { onAddScenario?: (scenario: ScenarioJourney) => void }) {
+  const [active, setActive] = useState(orderedJourneys[0].id)
   const reduceMotion = useReducedMotion()
-  const journey = scenarioJourneys.find((item) => item.id === active) ?? scenarioJourneys[0]
+  const journey = orderedJourneys.find((item) => item.id === active) ?? orderedJourneys[0]
+  const media = journeyMedia[journey.id]
 
   return (
     <section className="scenario-section" id="scenarios" aria-labelledby="scenario-title">
       <div className="shell">
         <div className="section-heading section-heading--wide">
-          <p className="section-kicker">Six complete decision journeys</p>
+          <p className="section-kicker">Eight complete decision journeys</p>
           <h2 id="scenario-title">Follow the garage, not a generic buyer</h2>
           <p className="section-lede">
             Each composite scenario begins with a real operating moment, moves through the building constraints, and ends with a product path plus a clear stop condition.
@@ -24,7 +39,7 @@ export function ScenarioJourneys() {
         <figure className="journey-panorama">
           <img
             src={asset('garage-scenario-journeys.webp')}
-            alt="Six garage environments showing a humid gym, office, wood shop, protected storage, rental setup, and cold-climate garage"
+            alt="Garage environments showing gym, office, workshop, vehicle storage, rental, and cold-climate uses"
             width="2167"
             height="726"
             loading="lazy"
@@ -34,7 +49,7 @@ export function ScenarioJourneys() {
         </figure>
 
         <div className="journey-picker" aria-label="Garage scenario journeys">
-          {scenarioJourneys.map((item, index) => (
+          {orderedJourneys.map((item, index) => (
             <button
               aria-pressed={active === item.id}
               key={item.id}
@@ -62,6 +77,10 @@ export function ScenarioJourneys() {
               <span>{journey.opening}</span>
             </div>
           </div>
+
+          <figure className="journey-detail__media">
+            <img src={asset(media.image)} alt={media.alt} width={media.width} height={media.height} loading="lazy" decoding="async" />
+          </figure>
 
           <div className="journey-narrative">
             <div>
@@ -118,6 +137,10 @@ export function ScenarioJourneys() {
               <p>{journey.ownership}</p>
             </div>
           </div>
+          <button className="button journey-add" onClick={() => onAddScenario?.(journey)} type="button">
+            <Plus size={18} weight="bold" aria-hidden="true" />
+            Use this scenario
+          </button>
         </motion.article>
       </div>
     </section>

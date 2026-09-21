@@ -37,6 +37,8 @@ The page's filterable pain-point atlas extends the original device-selection res
 
 Each item is labeled either **Authority** or **VOC signal** in the interface. Authority sources establish technical or safety boundaries; retailer and community examples are used only to discover language and failure modes. The complete claim-by-claim evidence assessment and direct links are in [INTERNET_PAIN_POINT_RESEARCH.md](INTERNET_PAIN_POINT_RESEARCH.md).
 
+A second content-gap audit focused only on decisions not already represented. It added low-temperature dehumidifier behavior and heat rejection, particle-versus-gas filtration limits, A2L refrigerant and Section 608 labor boundaries, micromobility and tool-battery charging, heat-pump-water-heater interactions, comfort use versus legal conversion, conditional radon screening, liquid-water management, flood exposure, EV preconditioning, and high-ceiling air movement. The full evidence, safe copy, overlap notes, and publication boundaries are in [COMPREHENSIVE_CONTENT_GAP_RESEARCH.md](COMPREHENSIVE_CONTENT_GAP_RESEARCH.md).
+
 ## Official GARVEE product snapshot
 
 Nine live U.S. product pages were audited on 2026-09-21 across portable AC, mini-split, cold-weather heat-pump, and evaporative-cooler paths. Product facts, price snapshots, page contradictions, warranty boundaries, and the scenario-to-product matrix are documented in [PRODUCT_RESEARCH.md](PRODUCT_RESEARCH.md).

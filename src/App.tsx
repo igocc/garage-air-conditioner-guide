@@ -19,7 +19,11 @@ import {
 import { motion, useReducedMotion, useScroll, useSpring } from 'motion/react'
 import { useRef, useState } from 'react'
 import { Advisor } from './components/Advisor'
+import { CompleteKit } from './components/CompleteKit'
+import { InstallationService } from './components/InstallationService'
+import { OperatingPlaybook } from './components/OperatingPlaybook'
 import { PainPointAtlas } from './components/PainPointAtlas'
+import { PlanDock } from './components/PlanDock'
 import { ProductRecommendations } from './components/ProductRecommendations'
 import { ScenarioJourneys } from './components/ScenarioJourneys'
 import { SolutionLadder } from './components/SolutionLadder'
@@ -36,6 +40,7 @@ import {
 } from './content'
 import { checkoutLayers, ownershipLayers } from './productContent'
 import { usePretextHeight } from './lib/usePretextHeight'
+import { emptyGaragePlan, type GaragePlanSnapshot } from './planTypes'
 
 const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 
@@ -117,6 +122,26 @@ const faqs = [
   {
     question: 'Does pre-charged mean a mini-split is fully DIY?',
     answer: 'No. The exact connection method matters. Conventional line sets can require evacuation, leak testing, refrigerant handling, electrical work, permits, and commissioning. Follow the product instructions and EPA or local requirements for the specific work.',
+  },
+  {
+    question: 'Can garage AC make the space a clean-air room during wildfire smoke?',
+    answer: 'Not by itself. Most window and ductless AC filters are intended to protect the equipment, not provide verified smoke-particle cleaning. During smoke events, reduce uncontrolled outdoor-air entry, avoid equipment that intentionally draws outdoor air when inappropriate, and select a separate air cleaner by smoke CADR and the actual room volume. A garage with fuel vapor, exhaust, spraying, welding, or uncontrolled process dust is not a safe clean-air shelter.',
+  },
+  {
+    question: 'Should I cool the garage for an EV or lithium tool batteries?',
+    answer: 'Temperature can affect charging and battery performance, but the equipment manufacturer sets the permitted charging and storage range. Use the specified charger, inspect damaged or swollen batteries, keep charging clear of combustible clutter, and plan the AC circuit together with EV charging and other large loads. Comfort cooling is not a battery fire-protection system.',
+  },
+  {
+    question: 'Will a heat-pump water heater cool and dehumidify the garage?',
+    answer: 'It can cool and dehumidify nearby air while its compressor is heating water, but the effect follows hot-water demand and the water heater controls. It is not sized to replace a room air conditioner. Confirm required room volume or ducting, condensate, sound, service access, and cold-weather impact for the exact model.',
+  },
+  {
+    question: 'What does R-32 or an A2L label change for the buyer?',
+    answer: 'It means the exact system uses a refrigerant with specific safety, installation, service-tool, component, and technician requirements. Do not mix indoor and outdoor components or reuse procedures based only on matching BTU. Read the refrigerant label and manual, then confirm the installer is prepared for that system and local requirements.',
+  },
+  {
+    question: 'Which accessories belong in the quote?',
+    answer: 'The answer depends on the system and site. Common decision lines include outdoor support, vibration isolation, a dedicated electrical path, disconnect, condensate route or pump, line protection, penetration sealing, weatherproof exhaust panel, support bracket, drainage, controls, source capture, and independent humidity monitoring. Separate in-box parts, site-required work, optional upgrades, and installer-supplied materials before comparing quotes.',
   },
 ] as const
 
@@ -256,10 +281,85 @@ function SystemExplorer() {
   )
 }
 
+function BuildSystemChapter() {
+  return (
+    <>
+      <section className="systems-section" id="systems" aria-labelledby="systems-title">
+        <div className="shell">
+          <Reveal className="section-heading section-heading--narrow">
+            <h2 id="systems-title">Every system has a failure mode</h2>
+            <p className="section-lede">Compare the whole setup, not only the largest capacity number in a listing title.</p>
+          </Reveal>
+          <SystemExplorer />
+        </div>
+      </section>
+
+      <SolutionLadder />
+
+      <section className="rating-section" aria-labelledby="rating-title">
+        <div className="shell rating-section__layout">
+          <Reveal className="rating-lead">
+            <Gauge size={46} weight="duotone" aria-hidden="true" />
+            <h2 id="rating-title">BTU labels do not all mean the same thing</h2>
+            <p>Portable AC listings may show a larger ASHRAE capacity and a lower DOE/SACC value. Use the same rating basis when comparing models.</p>
+          </Reveal>
+          <div className="rating-facts">
+            <Reveal>
+              <span>Portable AC</span>
+              <h3>Lead with DOE/SACC</h3>
+              <p>SACC accounts for factors such as infiltration and heat from the duct and cabinet during the test procedure.</p>
+            </Reveal>
+            <Reveal>
+              <span>Permanent systems</span>
+              <h3>Match load, not floor area alone</h3>
+              <p>Oversizing can shorten cycles and weaken humidity control. Undersizing can leave the system running without reaching the target.</p>
+            </Reveal>
+            <Reveal>
+              <span>Final selection</span>
+              <h3>Read the exact manual</h3>
+              <p>Coverage, voltage, low-temperature output, sound, line length, and drainage belong to the exact model, not the category.</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="climate-section" aria-labelledby="climate-title">
+        <div className="shell">
+          <div className="climate-hero">
+            <img
+              src={asset('garage-climate-zones.webp')}
+              alt="Three garage exteriors representing hot-dry, hot-humid, and mixed-cold climates"
+              width="2048"
+              height="768"
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <Sun size={34} weight="duotone" aria-hidden="true" />
+              <h2 id="climate-title">Climate changes the priority list</h2>
+            </div>
+          </div>
+          <div className="climate-grid">
+            {climateProfiles.map((profile) => (
+              <article key={profile.id}>
+                <h3>{profile.title}</h3>
+                <p className="climate-location">{profile.locations}</p>
+                <strong>{profile.focus}</strong>
+                <p>{profile.note}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
 function App() {
-  const heroLead = 'Diagnose heat, humidity, venting, power, and installation constraints before you shop by BTU.'
+  const heroLead = 'Turn heat, humidity, air quality, power, and installation constraints into one garage plan.'
   const heroLeadRef = useRef<HTMLParagraphElement>(null)
   usePretextHeight(heroLeadRef, heroLead)
+  const [garagePlan, setGaragePlan] = useState<GaragePlanSnapshot>(emptyGaragePlan)
 
   return (
     <>
@@ -272,38 +372,38 @@ function App() {
             <span>Garage Guide</span>
           </a>
           <nav aria-label="Primary navigation">
-            <a href="#scenarios">Scenarios</a>
-            <a href="#videos">Videos</a>
-            <a href="#pain-points">Pain points</a>
-            <a href="#advisor">Find your setup</a>
-            <a href="#products">Products</a>
+            <a href="#imagine">Imagine</a>
+            <a href="#advisor">Diagnose</a>
+            <a href="#systems">Build</a>
+            <a href="#products">Equip</a>
             <a href="#installation">Install</a>
+            <a href="#own">Own</a>
           </nav>
           <a className="button button--nav" href="#advisor">Build my plan</a>
         </div>
       </header>
 
       <main id="top">
-        <section className="hero">
+        <section className="hero" id="imagine">
           <div className="hero__media" aria-hidden="true">
             <img
-              src={asset('hero-garage.webp')}
-              srcSet={`${asset('hero-garage-800.webp')} 800w, ${asset('hero-garage.webp')} 1672w`}
+              src={asset('hero-garage-v2.jpg')}
+              srcSet={`${asset('hero-garage-v2-900.jpg')} 900w, ${asset('hero-garage-v2.jpg')} 1800w`}
               sizes="100vw"
               alt=""
-              width="1672"
-              height="941"
+              width="1800"
+              height="1013"
               fetchPriority="high"
             />
           </div>
           <div className="hero__scrim" />
           <div className="shell hero__content">
             <p className="hero__eyebrow">Garage air conditioner guide</p>
-            <h1>Make your garage usable.</h1>
+            <h1>Make the garage work for real life.</h1>
             <p ref={heroLeadRef} data-pretext>{heroLead}</p>
             <div className="hero__actions">
               <a className="button button--accent" href="#advisor">Build my plan</a>
-              <a className="button button--ghost" href="#story">Understand the space</a>
+              <a className="button button--ghost" href="#scenarios">Explore scenarios</a>
             </div>
           </div>
         </section>
@@ -319,13 +419,15 @@ function App() {
 
         <LensSwitcher />
 
-        <ScenarioJourneys />
+        <ScenarioJourneys onAddScenario={(scenario) => setGaragePlan((current) => ({ ...current, scenario }))} />
 
         <VideoGuides />
 
         <VocInsights />
 
         <PainPointAtlas />
+
+        <OperatingPlaybook />
 
         <section className="story-section" id="story" aria-labelledby="story-title">
           <div className="shell story-section__layout">
@@ -417,9 +519,13 @@ function App() {
                 <p><strong>Screening, not final sizing.</strong> Results use a transparent room-AC baseline with garage-specific adjustments and a wide range.</p>
               </div>
             </Reveal>
-            <Advisor />
+            <Advisor onPlanChange={(input, result) => setGaragePlan((current) => ({ ...current, input, result }))} />
           </div>
         </section>
+
+        <BuildSystemChapter />
+
+        <CompleteKit />
 
         <ProductRecommendations />
 
@@ -448,73 +554,7 @@ function App() {
           </div>
         </section>
 
-        <section className="systems-section" id="systems" aria-labelledby="systems-title">
-          <div className="shell">
-            <Reveal className="section-heading section-heading--narrow">
-              <h2 id="systems-title">Every system has a failure mode</h2>
-              <p className="section-lede">Compare the whole setup, not only the largest capacity number in a listing title.</p>
-            </Reveal>
-            <SystemExplorer />
-          </div>
-        </section>
-
-        <SolutionLadder />
-
-        <section className="rating-section" aria-labelledby="rating-title">
-          <div className="shell rating-section__layout">
-            <Reveal className="rating-lead">
-              <Gauge size={46} weight="duotone" aria-hidden="true" />
-              <h2 id="rating-title">BTU labels do not all mean the same thing</h2>
-              <p>Portable AC listings may show a larger ASHRAE capacity and a lower DOE/SACC value. Use the same rating basis when comparing models.</p>
-            </Reveal>
-            <div className="rating-facts">
-              <Reveal>
-                <span>Portable AC</span>
-                <h3>Lead with DOE/SACC</h3>
-                <p>SACC accounts for factors such as infiltration and heat from the duct and cabinet during the test procedure.</p>
-              </Reveal>
-              <Reveal>
-                <span>Permanent systems</span>
-                <h3>Match load, not floor area alone</h3>
-                <p>Oversizing can shorten cycles and weaken humidity control. Undersizing can leave the system running without reaching the target.</p>
-              </Reveal>
-              <Reveal>
-                <span>Final selection</span>
-                <h3>Read the exact manual</h3>
-                <p>Coverage, voltage, low-temperature output, sound, line length, and drainage belong to the exact model, not the category.</p>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-
-        <section className="climate-section" aria-labelledby="climate-title">
-          <div className="shell">
-            <div className="climate-hero">
-              <img
-                src={asset('garage-climate-zones.webp')}
-                alt="Three garage exteriors representing hot-dry, hot-humid, and mixed-cold climates"
-                width="2048"
-                height="768"
-                loading="lazy"
-                decoding="async"
-              />
-              <div>
-                <Sun size={34} weight="duotone" aria-hidden="true" />
-                <h2 id="climate-title">Climate changes the priority list</h2>
-              </div>
-            </div>
-            <div className="climate-grid">
-              {climateProfiles.map((profile) => (
-                <article key={profile.id}>
-                  <h3>{profile.title}</h3>
-                  <p className="climate-location">{profile.locations}</p>
-                  <strong>{profile.focus}</strong>
-                  <p>{profile.note}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <InstallationService />
 
         <section className="installation-section" id="installation" aria-labelledby="installation-title">
           <div className="shell installation-section__layout">
@@ -549,7 +589,7 @@ function App() {
           </div>
         </section>
 
-        <section className="ownership-section" aria-labelledby="ownership-title">
+        <section className="ownership-section" id="own" aria-labelledby="ownership-title">
           <div className="shell">
             <Reveal className="section-heading section-heading--narrow">
               <h2 id="ownership-title">Plan for the second summer</h2>
@@ -644,6 +684,7 @@ function App() {
           </a>
         </div>
       </footer>
+      <PlanDock plan={garagePlan} />
     </>
   )
 }
