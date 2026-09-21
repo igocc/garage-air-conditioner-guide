@@ -11,6 +11,7 @@ import {
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { type FormEvent, useMemo, useState } from 'react'
 import { systemProfiles } from '../content'
+import { productsById } from '../productContent'
 import {
   buildAdvisorResult,
   defaultAdvisorInput,
@@ -43,8 +44,11 @@ const insulationChoices = [
 const openingChoices = [
   { value: 'wall', label: 'Wall penetration allowed' },
   { value: 'window', label: 'Usable window or vent' },
+  { value: 'door-only', label: 'Main door can stay open', help: 'No sealed window or wall route' },
   { value: 'none', label: 'No approved opening' },
 ] satisfies Choice<AdvisorInput['opening']>[]
+
+const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 
 const operationChoices = [
   { value: 'occasional', label: 'Occasional pre-cooling' },
@@ -163,6 +167,41 @@ function ResultPanel({ result }: { result: AdvisorResult }) {
         </div>
       ) : null}
 
+      <div className="advisor-products">
+        <h4>{result.noProductReason ? 'Product decision' : 'Exact products to investigate'}</h4>
+        <p>{result.productNote}</p>
+        {result.noProductReason ? (
+          <div className="advisor-no-product">
+            <WarningOctagon size={22} weight="fill" aria-hidden="true" />
+            <strong>No trustworthy match yet</strong>
+            <span>{result.noProductReason}</span>
+          </div>
+        ) : (
+          <div className="advisor-product-list">
+            {result.recommendedProductIds.map((id, index) => {
+              const product = productsById[id]
+              return (
+                <a href={product.href} key={id} target="_blank" rel="noreferrer">
+                  <img
+                    src={asset(product.image)}
+                    alt=""
+                    width={product.imageWidth}
+                    height={product.imageHeight}
+                    loading="lazy"
+                  />
+                  <span>
+                    <small>{index === 0 ? 'Primary product path' : 'Alternative to compare'}</small>
+                    <strong>{id} · {product.name}</strong>
+                    <em>{product.price} snapshot · {product.sku}</em>
+                  </span>
+                  <ArrowRight size={17} aria-hidden="true" />
+                </a>
+              )
+            })}
+          </div>
+        )}
+      </div>
+
       <div className="result-group">
         <h4>Your installation checklist</h4>
         <ol>
@@ -172,14 +211,14 @@ function ResultPanel({ result }: { result: AdvisorResult }) {
         </ol>
       </div>
 
-      {profile.link ? (
-        <a className="button button--accent button--full" href={profile.link} target="_blank" rel="noreferrer">
-          {profile.linkLabel}
+      {result.noProductReason ? (
+        <a className="button button--accent button--full" href="#installation">
+          Review installation paths
           <ArrowRight size={18} aria-hidden="true" />
         </a>
       ) : (
-        <a className="button button--accent button--full" href="#installation">
-          Review installation paths
+        <a className="button button--accent button--full" href="#products">
+          Compare full product evidence
           <ArrowRight size={18} aria-hidden="true" />
         </a>
       )}

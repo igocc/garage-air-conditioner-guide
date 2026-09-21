@@ -99,3 +99,18 @@ Color palette: cool gray, white, navy technical elements, restrained orange high
 Constraints: no text; no logos; no watermark; no extension cord; no loose hose; no impossible refrigerant routing; no unsafe electrical work
 Avoid: step-by-step instructions, tiny technical labels, cartoon style, exploded parts, futuristic equipment
 ```
+
+## `garage-scenario-journeys.png`
+
+```text
+Use case: photorealistic-natural
+Asset type: wide editorial section image for an interactive garage air-conditioner buying guide
+Primary request: one cohesive ultra-wide architectural panorama divided naturally into six adjacent real American garage-use environments, each visibly distinct but sharing the same eye-level camera language: 1) a hot-humid garage gym with weights, fan and a wall-mounted ductless unit, 2) a finished garage office/studio with desk and computer, 3) a woodworking shop with visible source-capture dust hose and clean workbench, 4) a carefully organized vehicle and collectible storage bay with hygrometer-like small device but no readable text, 5) a rental/HOA garage with no wall penetrations and a portable air conditioner positioned near an allowed sliding-window exhaust panel, 6) a cold-climate garage exterior/interior transition with snow outside and a wall-mounted heat pump inside.
+Scene/backdrop: realistic suburban U.S. garages, believable insulation, door tracks, electrical outlets and storage; no people needed
+Style/medium: premium photorealistic editorial architectural photography, natural materials and accurate scale
+Composition/framing: very wide landscape, six equal visual chapters separated by architectural dividers or changes in light, strong left-to-right story flow, every scene readable at card crop, no central hero product, no text space required
+Lighting/mood: transitions from warm humid daylight through neutral workshop light to cool winter daylight, practical and trustworthy rather than luxurious
+Color palette: neutral concrete, white and wood with restrained deep navy and safety-orange accents only in small objects
+Constraints: no brand logos, no readable text, no watermarks, no fake product labels, no fumes or unsafe vehicle idling, no impossible ducts or floating equipment, no exaggerated blue air streams, do not make this an infographic; the image must look like a real set of documented user environments
+Avoid: showroom perfection, sci-fi styling, glossy advertising, collage borders, labels, icons, people posing, unsafe installation details
+```

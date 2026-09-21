@@ -19,6 +19,8 @@ import {
 import { motion, useReducedMotion, useScroll, useSpring } from 'motion/react'
 import { useRef, useState } from 'react'
 import { Advisor } from './components/Advisor'
+import { ProductRecommendations } from './components/ProductRecommendations'
+import { ScenarioJourneys } from './components/ScenarioJourneys'
 import {
   climateProfiles,
   heatPaths,
@@ -26,9 +28,9 @@ import {
   problemRoles,
   sources,
   systemProfiles,
-  useCases,
   type SystemProfile,
 } from './content'
+import { checkoutLayers, ownershipLayers } from './productContent'
 import { usePretextHeight } from './lib/usePretextHeight'
 
 const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
@@ -268,7 +270,7 @@ function App() {
           <nav aria-label="Primary navigation">
             <a href="#scenarios">Scenarios</a>
             <a href="#advisor">Find your setup</a>
-            <a href="#systems">Compare systems</a>
+            <a href="#products">Products</a>
             <a href="#installation">Install</a>
           </nav>
           <a className="button button--nav" href="#advisor">Build my plan</a>
@@ -311,33 +313,7 @@ function App() {
 
         <LensSwitcher />
 
-        <section className="scenario-section" id="scenarios" aria-labelledby="scenario-title">
-          <div className="shell">
-            <Reveal className="section-heading section-heading--narrow">
-              <h2 id="scenario-title">The job changes the answer</h2>
-              <p className="section-lede">A garage gym, office, workshop, and storage space can share the same square footage but need different controls.</p>
-            </Reveal>
-            <figure className="scenario-figure">
-              <img
-                src={asset('garage-life-scenes.webp')}
-                alt="Four realistic garage uses: gym, office, workshop, and vehicle storage"
-                width="2073"
-                height="758"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-            <div className="scenario-grid">
-              {useCases.map((item) => (
-                <Reveal className="scenario-item" key={item.id}>
-                  <h3>{item.title}</h3>
-                  <strong>{item.question}</strong>
-                  <p>{item.detail}</p>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ScenarioJourneys />
 
         <section className="story-section" id="story" aria-labelledby="story-title">
           <div className="shell story-section__layout">
@@ -366,6 +342,26 @@ function App() {
                 decoding="async"
               />
             </Reveal>
+          </div>
+        </section>
+
+        <section className="whole-plan-section" aria-labelledby="whole-plan-title">
+          <div className="shell">
+            <Reveal className="whole-plan-heading">
+              <p className="section-kicker">The five-layer garage plan</p>
+              <h2 id="whole-plan-title">One purchase cannot solve five different jobs</h2>
+              <p className="section-lede">Move from the building shell to ongoing ownership. A weak layer changes the equipment decision above it.</p>
+            </Reveal>
+            <div className="whole-plan-grid">
+              {ownershipLayers.map((layer, index) => (
+                <Reveal className="whole-plan-card" key={layer.title}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{layer.title}</h3>
+                  <strong>{layer.prompt}</strong>
+                  <p>{layer.detail}</p>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -410,6 +406,33 @@ function App() {
               </div>
             </Reveal>
             <Advisor />
+          </div>
+        </section>
+
+        <ProductRecommendations />
+
+        <section className="checkout-section" aria-labelledby="checkout-title">
+          <div className="shell checkout-layout">
+            <Reveal className="checkout-lead">
+              <p className="section-kicker">Beyond the box price</p>
+              <h2 id="checkout-title">Build the installed decision, not a cart subtotal</h2>
+              <p className="section-lede">The product price is only one line. Record every physical path, professional scope, and unresolved responsibility before checkout.</p>
+              <div className="warranty-note">
+                <strong>Support snapshot</strong>
+                <p>GARVEE states a 12-month repair warranty and displays 30-day returns. The audited policy does not establish coverage for HVAC labor, removal, refrigerant service, diagnostics, or return freight on an installed mini-split.</p>
+                <a href="https://www.garvee.com/pages/warranty-policy" target="_blank" rel="noreferrer">
+                  Read the current policy <ArrowRight size={16} aria-hidden="true" />
+                </a>
+              </div>
+            </Reveal>
+            <div className="checkout-table" role="table" aria-label="Installed decision layers">
+              {checkoutLayers.map(([label, detail]) => (
+                <div role="row" key={label}>
+                  <strong role="rowheader">{label}</strong>
+                  <span role="cell">{detail}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

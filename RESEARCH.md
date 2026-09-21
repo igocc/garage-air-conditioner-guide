@@ -35,6 +35,12 @@ Amazon listing titles, rating labels, installation-kit language, window-kit ques
 
 Semrush was part of the intended research scope, but account-level keyword volume, difficulty, and CPC data were not available in the logged-out research environment. The page therefore does not display or imply any Semrush numeric estimates.
 
+## Official GARVEE product snapshot
+
+Nine live U.S. product pages were audited on 2026-09-21 across portable AC, mini-split, cold-weather heat-pump, and evaporative-cooler paths. Product facts, price snapshots, page contradictions, warranty boundaries, and the scenario-to-product matrix are documented in [PRODUCT_RESEARCH.md](PRODUCT_RESEARCH.md).
+
+The implementation deliberately permits a no-match result. Official product evidence did not support an unconditional recommendation when there is no exterior heat-rejection path, when hazardous fumes or uncontrolled fine dust are present, or when sole-source winter heat depends on unpublished low-temperature capacity data.
+
 ## Attached deck limitation
 
 `车库空调-Reddit-VOC-9.4.pptx` is a useful qualitative synthesis. It does not contain a reproducible raw-source appendix with Reddit URLs, Amazon review exports, dates, sample sizes, or Semrush metric tables. Its statements were treated as hypotheses to test and as prompts for coverage, not as authoritative evidence.

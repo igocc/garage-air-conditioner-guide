@@ -1,32 +1,5 @@
 import type { SystemId } from './lib/advisor'
 
-export const useCases = [
-  {
-    id: 'gym',
-    title: 'Garage gym',
-    question: 'Can the space recover before the workout starts?',
-    detail: 'Pre-cooling, humidity, open-door recovery, noise, and rust on bars or machines matter as much as the thermostat setting.',
-  },
-  {
-    id: 'office',
-    title: 'Office or studio',
-    question: 'Can it stay comfortable for a full workday?',
-    detail: 'Daily occupancy, computers, calls, glare, and background noise make stable control more important than a quick blast of cold air.',
-  },
-  {
-    id: 'workshop',
-    title: 'Workshop',
-    question: 'What must be captured before air is recirculated?',
-    detail: 'Wood dust, welding fumes, finishes, and solvents need process-specific source control. Cooling handles heat, not every contaminant.',
-  },
-  {
-    id: 'storage',
-    title: 'Vehicles and storage',
-    question: 'Is temperature or moisture doing the damage?',
-    detail: 'Tools, finishes, electronics, wood, and collectibles may benefit more from steady humidity management than aggressive cooling.',
-  },
-] as const
-
 export const problemRoles = [
   {
     title: 'Cooling and heating',
@@ -164,6 +137,11 @@ export const ownershipMoments = [
 ] as const
 
 export const sources = [
+  {
+    group: 'Product and support snapshot',
+    title: 'GARVEE warranty policy',
+    href: 'https://www.garvee.com/pages/warranty-policy',
+  },
   {
     group: 'Sizing and efficiency',
     title: 'ENERGY STAR room air conditioner sizing guidance',
