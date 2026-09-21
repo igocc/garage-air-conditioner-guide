@@ -40,9 +40,8 @@ import {
 } from './content'
 import { checkoutLayers, ownershipLayers } from './productContent'
 import { usePretextHeight } from './lib/usePretextHeight'
+import { asset } from './lib/assets'
 import { emptyGaragePlan, type GaragePlanSnapshot } from './planTypes'
-
-const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 
 const lenses = [
   {

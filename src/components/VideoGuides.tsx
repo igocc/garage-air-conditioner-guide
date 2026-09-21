@@ -1,9 +1,8 @@
 import { ArrowRight, Pause, Play, Sparkle } from '@phosphor-icons/react'
 import { motion, useReducedMotion } from 'motion/react'
 import { useEffect, useState } from 'react'
+import { asset } from '../lib/assets'
 import { videoGuides } from '../videoContent'
-
-const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 
 export function VideoGuides() {
   const [activeId, setActiveId] = useState(videoGuides[0].id)

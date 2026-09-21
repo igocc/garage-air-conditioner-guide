@@ -1,9 +1,8 @@
 import { ArrowRight, CheckCircle, Plus, ShieldWarning } from '@phosphor-icons/react'
 import { motion, useReducedMotion } from 'motion/react'
 import { useState } from 'react'
+import { asset } from '../lib/assets'
 import { productsById, scenarioJourneys, type ScenarioJourney } from '../productContent'
-
-const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 
 const journeyMedia: Record<string, { image: string; alt: string; width: number; height: number }> = {
   'humid-gym': { image: 'hero-garage-v2.jpg', alt: 'Lived-in garage with a compact gym, work area, vehicle, tools, and wall-mounted mini-split', width: 1800, height: 1013 },

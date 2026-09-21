@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:offline": "tsc -b && vite build --base ./ --outDir dist-offline --emptyOutDir && node scripts/package-offline.mjs",
     "lint": "eslint .",
     "test": "vitest run",
     "preview": "vite preview"

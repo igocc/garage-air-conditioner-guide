@@ -9,8 +9,8 @@ import {
   Wrench,
 } from '@phosphor-icons/react'
 import { type FormEvent, useMemo, useState } from 'react'
+import { asset } from '../lib/assets'
 
-const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 type DemoStatus = 'available' | 'review' | 'outside'
 
 const statusCopy: Record<DemoStatus, { title: string; body: string }> = {

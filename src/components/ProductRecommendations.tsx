@@ -1,8 +1,8 @@
 import { ArrowRight, CheckCircle, Warning } from '@phosphor-icons/react'
 import { useState } from 'react'
+import { asset } from '../lib/assets'
 import { products, type ProductCategory } from '../productContent'
 
-const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 type Filter = 'All' | ProductCategory
 const filters: Filter[] = ['All', 'Portable', 'Mini-split', 'Climate-specific']
 

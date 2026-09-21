@@ -35,6 +35,18 @@ npm test
 npm run build
 ```
 
+## Offline edition
+
+Run the offline build to create a self-contained HTML file with the application code, styles, fonts, and page imagery embedded:
+
+```bash
+npm run build:offline
+```
+
+Open `dist-offline/garage-air-conditioner-guide-offline.html` directly in a modern browser. The guide, planner, filters, storyboards, and local imagery do not require a network connection. External GARVEE product links and research-source links still require internet access.
+
+A ready-to-share package is stored at `release/GARVEE-Garage-Air-Conditioner-Guide-Offline.zip`.
+
 ## Deployment
 
 Pushes to `main` deploy `dist/` to GitHub Pages through `.github/workflows/deploy.yml`.

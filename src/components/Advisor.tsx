@@ -19,6 +19,7 @@ import {
   type AdvisorResult,
   type Pollutant,
 } from '../lib/advisor'
+import { asset } from '../lib/assets'
 
 type Choice<T extends string> = { value: T; label: string; help?: string }
 
@@ -48,7 +49,6 @@ const openingChoices = [
   { value: 'none', label: 'No approved opening' },
 ] satisfies Choice<AdvisorInput['opening']>[]
 
-const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 
 const operationChoices = [
   { value: 'occasional', label: 'Occasional pre-cooling' },
